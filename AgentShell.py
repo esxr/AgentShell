@@ -13,7 +13,18 @@ Commands:
     status      - Check status of the interactive session
     end         - End the interactive session and clean up
 
+# IMPORTANT: activate the virtual environment
+# AgentShell works best in virtual environment
+
 Examples:
+    # Pre-requisites:
+    # IMPORTANT: activate the virtual environment
+    # AgentShell works best in virtual environment
+    source .venv/bin/activate
+    
+    # install the dependencies
+    pip install psutil
+
     # Set up the environment
     python3 AgentShell.py setup
 
