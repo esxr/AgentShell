@@ -22,30 +22,28 @@ python3 ../AgentShell.py receive
 python3 ../AgentShell.py end
 ```
 
-### 2. Node.js Interactive Server (`nodejs_server.js`)
+### 2. Calculator Tool (`calculator.py`)
 
-A more complex example with both an HTTP server and CLI interface:
+An interactive command-line calculator that:
 
-- HTTP server with endpoints for the web
-- Interactive command-line interface for management
-- Demonstrates how AgentShell can control server applications
+- Reads expressions from stdin and outputs results to stdout
+- Supports basic arithmetic operations: add, subtract, multiply, divide
+- Provides algebraic expression evaluation with the eval command
+- Includes trigonometric functions: sin, cos, tan
+- Can convert degrees to radians with the deg command
+- Solves algebraic equations with the solve command
+- Demonstrates more complex interactive processing with AgentShell
 
 Usage with AgentShell:
 
 ```bash
 python3 ../AgentShell.py setup
-python3 ../AgentShell.py start "node nodejs_server.js"
-python3 ../AgentShell.py send "help"
+python3 ../AgentShell.py start "./calculator.py"
+python3 ../AgentShell.py send "add 5 3"
 python3 ../AgentShell.py receive
-python3 ../AgentShell.py send "start"
+python3 ../AgentShell.py send "eval 2*(3+4)"
 python3 ../AgentShell.py receive
-
-# In a different terminal:
-curl http://localhost:3000/
-curl http://localhost:3000/echo/hello-world
-
-# Continue in the original terminal:
-python3 ../AgentShell.py send "stop"
+python3 ../AgentShell.py send "solve x+5=10"
 python3 ../AgentShell.py receive
 python3 ../AgentShell.py end
 ```
