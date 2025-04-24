@@ -1,39 +1,39 @@
 # AgentShell
 
-A utility that enables AI agents to interact with command-line tools that require input.
+A cursor utility file that enables AI agents to interact with interactive REPL-style or shell-like command-line tools.
 
-## Overview
+## Usage Instructions
+Just paste this file in your workspace and give a query like so:
+```
+Create a commandline tool called calculator.py in @examples. Make one feature at a time (e.g. first numerical, then algebraic, and then trigonometric). ALWAYS use @AgentShell.py to test it at every turn and interact with it. CAREFULLY READ the instructions in @AgentShell.py to learn how to use it. Activate the virtual environment beforehand.
+```
 
-This tool makes it possible for AI Agents to interact with any command-line program that expects user input, especially interactive tools like REPLs, shell sessions, and text-based applications. It's particularly useful when:
+## Problems
+This was made to solve the following problems.
 
-- Working with AI assistants or tools that don't natively support interactive input
-- Running interactive sessions in the background
-- Sending input to and receiving output from long-running processes
-- Working with interactive shells, interpreters, or REPLs
+![Cursor agent mode - when running terminal commands often hangs up the terminal, requiring a click to pop it out in order to continue commands](<media/Screenshot 2025-04-24 at 12.47.58 pm.png>)
 
-## Installation
+![The cursor agent doesn't support "interactive" commands. For example, if the command requires further input, sometimes cursor agent just hangs and waits for me to input y/n or other input to the interactive command, even in yolo mode](<media/Screenshot 2025-04-24 at 12.48.52 pm.png>)
 
-### Requirements
+## Demo
+
+![AgentShell Demo](<media/AgentShell.gif>)
+
+Watch the video: https://www.youtube.com/watch?v=LPHC2ZC2UrU
+
+## Prerequisites
 
 - Python 3.6+
 - `psutil` package
 
-### Setup
 
-```bash
-# Install dependencies
-pip install psutil
-```
-
-## Basic Usage
+## Command Reference
 
 The AgentShell tool provides these commands:
 
 ```
 python3 AgentShell.py [setup|start|send|receive|status|end]
 ```
-
-### Command Reference
 
 - `setup`: Initialize the environment for the interactive session
 - `start [command]`: Start an interactive command in the background
@@ -143,55 +143,6 @@ Terminated command (PID 12347)
 AgentShell session ended.
 ```
 
-### Example 4: Interactive Node.js Server
-
-```bash
-# Set up the session
-$ python3 AgentShell.py setup
-AgentShell session ready.
-
-# Start the Node.js server
-$ python3 AgentShell.py start "node server.js"
-Started interactive command (PID: 96992): node server.js
-
-# View server help commands
-$ python3 AgentShell.py send "help"
-Sent: 'help'
-
-# Receive the help output
-$ python3 AgentShell.py receive
-Received: 'Interactive Node.js Server
-Type "help" for available commands
-server> Available commands:
-  start [port]  - Start the server (optional port)
-  stop          - Stop the server
-  status        - Check server status
-  help          - Show this help
-  exit          - Exit the program
-server>'
-
-# Start the HTTP server
-$ python3 AgentShell.py send "start"
-Sent: 'start'
-
-# Test the HTTP server with curl
-$ curl -s http://localhost:3000/
-Welcome to the interactive Node.js server!
-
-# Test the echo endpoint
-$ curl -s http://localhost:3000/echo/hello-world
-Echo: hello-world
-
-# Stop the server
-$ python3 AgentShell.py send "stop"
-Sent: 'stop'
-
-# End the session
-$ python3 AgentShell.py end
-Terminated command (PID 96992)
-AgentShell session ended.
-```
-
 ## Troubleshooting
 
 ### Common Issues
@@ -219,3 +170,6 @@ AgentShell session ended.
 ## Implementation Details
 
 This tool uses named pipes (FIFOs) to create communication channels between processes. For more details on how it works, see the comments in the source code.
+
+## Contribution
+Please feel free to improve the file for your usecases and submit a PR
